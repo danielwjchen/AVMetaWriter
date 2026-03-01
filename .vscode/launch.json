@@ -4,21 +4,21 @@
             "type": "swift",
             "request": "launch",
             "args": [],
-            "cwd": "${workspaceFolder:AVMetaWritter}",
-            "name": "Debug AVMetaWritter",
-            "target": "AVMetaWritter",
+            "cwd": "${workspaceFolder:AVMetaWriter}",
+            "name": "Debug AVMetaWriter",
+            "target": "AVMetaWriter",
             "configuration": "debug",
-            "preLaunchTask": "swift: Build Debug AVMetaWritter"
+            "preLaunchTask": "swift: Build Debug AVMetaWriter"
         },
         {
             "type": "swift",
             "request": "launch",
             "args": [],
-            "cwd": "${workspaceFolder:AVMetaWritter}",
-            "name": "Release AVMetaWritter",
-            "target": "AVMetaWritter",
+            "cwd": "${workspaceFolder:AVMetaWriter}",
+            "name": "Release AVMetaWriter",
+            "target": "AVMetaWriter",
             "configuration": "release",
-            "preLaunchTask": "swift: Build Release AVMetaWritter"
+            "preLaunchTask": "swift: Build Release AVMetaWriter"
         }
     ]
 }

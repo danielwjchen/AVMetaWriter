@@ -4,14 +4,14 @@
 import PackageDescription
 
 let package = Package(
-  name: "AVMetaWritter",
+  name: "AVMetaWriter",
   dependencies: [
     .package(url: "https://github.com/apple/swift-argument-parser", from: "1.0.0")
 
   ],
   targets: [
     .executableTarget(
-      name: "AVMetaWritter",
+      name: "AVMetaWriter",
       dependencies: [
         .product(name: "ArgumentParser", package: "swift-argument-parser")
       ],
