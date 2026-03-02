@@ -2,9 +2,21 @@ import AVFoundation
 import ArgumentParser
 import Foundation
 
+let signatureKey = "Optimized by Beau"
+
 enum SignatureError: Error {
   case exportSessionCreationFailed
   case exportFailed(Error?)
+}
+
+func isProcessed(inputURL: URL, signature: String) async throws -> Bool {
+  let asset = AVAsset(url: inputURL)
+  let metadata = asset.metadata
+
+  return metadata.contains { item in
+    guard let value = item.value as? String else { return false }
+    return value.contains(signature)
+  }
 }
 
 func ensureSignatureMetadata(
@@ -15,16 +27,6 @@ func ensureSignatureMetadata(
 
   let asset = AVAsset(url: inputURL)
   let metadata = asset.metadata
-
-  // Check if signature exists
-  let signatureExists = metadata.contains { item in
-    guard let value = item.value as? String else { return false }
-    return value.contains(signature)
-  }
-
-  if signatureExists {
-    return inputURL
-  }
 
   guard
     let exportSession = AVAssetExportSession(
@@ -73,8 +75,13 @@ struct AVMetaWriter: AsyncParsableCommand {
     let inputURL = URL(fileURLWithPath: input)
     let outputURL = URL(fileURLWithPath: output)
 
+    if try await isProcessed(inputURL: inputURL, signature: signatureKey) {
+      print("File already contains the signature. No changes made.")
+      return
+    }
+
     let _ = try await ensureSignatureMetadata(
-      inputURL: inputURL, outputURL: outputURL, signature: "My Signature"
+      inputURL: inputURL, outputURL: outputURL, signature: signatureKey
     )
     print("Metadata written successfully to \(output)")
   }
