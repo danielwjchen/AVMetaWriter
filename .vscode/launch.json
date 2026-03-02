@@ -3,7 +3,12 @@
         {
             "type": "swift",
             "request": "launch",
-            "args": [],
+            "args": [
+                "--input",
+                "${workspaceFolder:AVMetaWriter}/Samples/sample-5s.mp4",
+                "--output",
+                "output.mp4"
+            ],
             "cwd": "${workspaceFolder:AVMetaWriter}",
             "name": "Debug AVMetaWriter",
             "target": "AVMetaWriter",
