@@ -5,8 +5,9 @@ import PackageDescription
 
 let package = Package(
   name: "AVMetaWriter",
+  platforms: [.macOS(.v12)],
   dependencies: [
-    .package(url: "https://github.com/apple/swift-argument-parser", from: "1.0.0")
+    .package(url: "https://github.com/apple/swift-argument-parser", from: "1.2.0")
 
   ],
   targets: [
